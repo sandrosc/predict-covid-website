@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://sandrosc.github.io/predict-covid-website",
+  "homepage": "https://covidprogress.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
