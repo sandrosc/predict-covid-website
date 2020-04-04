@@ -7,6 +7,7 @@ ${csvData}`;
     header: true,
     transformHeader: header => header || 'index',
     transform: v => +v,
+    skipEmptyLines: true,
   });
   return data;
 }
