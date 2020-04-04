@@ -21,7 +21,7 @@ export default function Configuration({
         selfQuarantine,
       });
     }
-  }, [socialDistancing, selfQuarantine]);
+  }, [socialDistancing, selfQuarantine, onConfigUpdate]);
 
   if (loading) return null;
 
