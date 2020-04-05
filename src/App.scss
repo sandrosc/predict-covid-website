@@ -29,7 +29,7 @@
   }
   .firstVisualization {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: min-content 1fr;
     grid-template-rows: minmax(auto, 400px);
     max-width: 1400px;
     margin: 0 auto;

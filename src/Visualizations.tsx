@@ -34,13 +34,16 @@ export default function Visualizations({
   loading,
   data,
   config,
+  precautionDates,
+  onUpdatePrecautionDates,
 }: {
   loading: boolean;
   data: DataPoint[];
   config: { socialDistancing: boolean; selfQuarantine: boolean };
+  precautionDates: { start: number; end: number };
+  onUpdatePrecautionDates: ({ start, end }: { start: number; end: number }) => void;
 }) {
-  const [precautionDates, setPrecationDates] = useState({ startIndex: 0, endIndex: 20 });
-  if (loading || !data) return null;
+  if (loading || !data) return <div />;
 
   const totalInfected = data.map(d => d['total infected']);
   const peakX = totalInfected.indexOf(Math.max(...totalInfected));
@@ -100,10 +103,12 @@ export default function Visualizations({
       <ResponsiveContainer>
         <AreaChart data={data} margin={{ top: 10, right: 30, left: 75, bottom: 0 }}>
           <Brush
-            startIndex={precautionDates.startIndex}
-            endIndex={precautionDates.endIndex}
+            startIndex={precautionDates.start}
+            endIndex={precautionDates.end}
             className={classNames({ disabled: !config.socialDistancing && !config.selfQuarantine })}
-            onChange={setPrecationDates}
+            onChange={({ startIndex, endIndex }) => {
+              onUpdatePrecautionDates({ start: startIndex, end: endIndex });
+            }}
             gap={10}
           />
           <Text>Nice</Text>

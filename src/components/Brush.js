@@ -153,15 +153,22 @@ class Brush extends PureComponent {
   };
 
   handleDragEnd = () => {
+    const { startIndex, endIndex, onChange } = this.props;
     this.setState({
       isTravellerMoving: false,
       isSlideMoving: false,
     });
-    const { startIndex, endIndex } = this.getIndex({ startX: this.state.startX, endX: this.state.endX });
-    this.setState({
-      startX: this.scale(startIndex),
-      endX: this.scale(endIndex),
+    const newIndex = this.getIndex({
+      startX: this.state.startX,
+      endX: this.state.endX,
     });
+    this.setState({
+      startX: this.scale(newIndex.startIndex),
+      endX: this.scale(newIndex.endIndex),
+    });
+    if ((newIndex.startIndex !== startIndex || newIndex.endIndex !== endIndex) && onChange) {
+      onChange(newIndex);
+    }
   };
 
   handleLeaveWrapper = () => {
@@ -194,21 +201,13 @@ class Brush extends PureComponent {
 
   handleSlideDrag(e) {
     const { slideMoveStartX, startX, endX } = this.state;
-    const { x, width, travellerWidth, startIndex, endIndex, onChange } = this.props;
+    const { x, width, travellerWidth } = this.props;
     let delta = e.pageX - slideMoveStartX;
 
     if (delta > 0) {
       delta = Math.min(delta, x + width - travellerWidth - endX, x + width - travellerWidth - startX);
     } else if (delta < 0) {
       delta = Math.max(delta, x - startX, x - endX);
-    }
-    const newIndex = this.getIndex({
-      startX: startX + delta,
-      endX: endX + delta,
-    });
-
-    if ((newIndex.startIndex !== startIndex || newIndex.endIndex !== endIndex) && onChange) {
-      onChange(newIndex);
     }
 
     this.setState({
@@ -230,10 +229,10 @@ class Brush extends PureComponent {
   }
 
   handleTravellerMove(e) {
-    const { brushMoveStartX, movingTravellerId, endX, startX } = this.state;
+    const { brushMoveStartX, movingTravellerId } = this.state;
     const prevValue = this.state[movingTravellerId];
 
-    const { x, width, travellerWidth, onChange, gap, data } = this.props;
+    const { x, width, travellerWidth } = this.props;
     const params = { startX: this.state.startX, endX: this.state.endX };
 
     let delta = e.pageX - brushMoveStartX;
@@ -245,34 +244,10 @@ class Brush extends PureComponent {
 
     params[movingTravellerId] = prevValue + delta;
 
-    const newIndex = this.getIndex(params);
-    const { startIndex, endIndex } = newIndex;
-    const isFullGap = () => {
-      const lastIndex = data.length - 1;
-      if (
-        (movingTravellerId === 'startX' && (endX > startX ? startIndex % gap === 0 : endIndex % gap === 0)) ||
-        (endX < startX && endIndex === lastIndex) ||
-        (movingTravellerId === 'endX' && (endX > startX ? endIndex % gap === 0 : startIndex % gap === 0)) ||
-        (endX > startX && endIndex === lastIndex)
-      ) {
-        return true;
-      }
-      return false;
-    };
-
-    this.setState(
-      {
-        [movingTravellerId]: prevValue + delta,
-        brushMoveStartX: e.pageX,
-      },
-      () => {
-        if (onChange) {
-          if (isFullGap()) {
-            onChange(newIndex);
-          }
-        }
-      }
-    );
+    this.setState({
+      [movingTravellerId]: prevValue + delta,
+      brushMoveStartX: e.pageX,
+    });
   }
 
   updateScale(props) {
@@ -360,12 +335,15 @@ class Brush extends PureComponent {
   }
 
   renderText() {
-    const { startIndex, endIndex, y, height, travellerWidth, stroke } = this.props;
+    const { y, height, travellerWidth, stroke } = this.props;
+    const { startX, endX } = this.state;
     const offset = 5;
     const attrs = {
       pointerEvents: 'none',
       fill: stroke,
     };
+
+    const { startIndex, endIndex } = this.getIndex({ startX, endX });
 
     return (
       <Layer className="recharts-brush-texts">

@@ -1,8 +1,10 @@
 import Papa from 'papaparse';
 
-export default function transformData(csvData: string): DataPoint[] {
-  const csvText = `${headers.join(';')}
-${csvData}`;
+export default function transformData(csvData: string, addHeader = false): DataPoint[] {
+  const csvText = addHeader
+    ? `${headers.join(',')}
+${csvData}`
+    : csvData;
   const { data } = Papa.parse(csvText, {
     header: true,
     transformHeader: header => header || 'index',
