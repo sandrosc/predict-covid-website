@@ -27,14 +27,21 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Covid Progress</h1>
+        <div className="headerContent">
+          <h1>Covid Progress</h1>
+          <p>
+            <span>Covid-19</span> outbreak prediction in Switzerland
+          </p>
+        </div>
       </header>
-      <aside>
-        <Configuration loading={loading} onConfigUpdate={setConfig} />
-      </aside>
-      <main>
-        <Visualizations loading={loading} data={data} config={config} />
-      </main>
+      <div className="firstVisualization">
+        <aside>
+          <Configuration loading={loading} onConfigUpdate={setConfig} />
+        </aside>
+        <main>
+          <Visualizations loading={loading} data={data} config={config} />
+        </main>
+      </div>
     </div>
   );
 }

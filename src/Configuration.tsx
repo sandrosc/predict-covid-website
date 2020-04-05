@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Toggle from 'react-toggle';
+import './Configuration.scss';
 
 export default function Configuration({
   loading,
@@ -16,6 +17,7 @@ export default function Configuration({
     if (isInitial.current) {
       isInitial.current = false;
     } else {
+      console.log('configupdat');
       onConfigUpdate({
         socialDistancing,
         selfQuarantine,

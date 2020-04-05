@@ -25,7 +25,7 @@ const headers = [
   'accumulated cases',
 ];
 
-interface DataPoint {
+export interface DataPoint {
   index: number;
   'Infected asymptomatic': number;
   'Infected symptomatic': number;

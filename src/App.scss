@@ -1,22 +1,44 @@
 .App {
+  color: #1b1d1c;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  max-width: 1400px;
-  padding: 0 20px 20px;
-  display: grid;
-  grid-template-areas: 'header header' 'aside main';
-  grid-template-rows: min-content auto;
   > header {
-    grid-area: header;
+    > .headerContent {
+      color: #ea1821;
+      h1 {
+        font-family: 'Prompt', sans-serif;
+        font-weight: 800;
+        font-size: 50px;
+        margin: 0;
+      }
+      p {
+        color: #1b1d1c;
+        font-family: 'Prompt', sans-serif;
+        font-size: 20px;
+        margin: 0;
+        margin-top: -5px;
+        > span {
+          color: #ea1821;
+        }
+      }
+      margin: 0 auto;
+      max-width: 1400px;
+      padding: 0 20px;
+    }
+    margin-bottom: 20px;
   }
-  > aside {
-    grid-area: aside;
-  }
-  > main {
-    grid-area: main;
+  .firstVisualization {
     display: grid;
-    overflow: hidden;
+    grid-template-columns: auto auto;
+    grid-template-rows: minmax(auto, 400px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+    min-width: 0;
+    justify-self: center;
+    > main {
+      display: grid;
+      overflow: hidden;
+    }
   }
 }

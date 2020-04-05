@@ -8,10 +8,14 @@ import {
   Tooltip,
   Area,
   Brush as OriginalBrush,
+  ReferenceLine,
+  Label,
 } from 'recharts';
 import CustomBrush from './components/Brush';
 import classNames from 'classnames';
 import './Visualizations.scss';
+import { DataPoint } from './transformData';
+
 const Brush = CustomBrush as typeof OriginalBrush;
 
 const graphCategories = [
@@ -30,11 +34,14 @@ export default function Visualizations({
   config,
 }: {
   loading: boolean;
-  data: object[];
+  data: DataPoint[];
   config: { socialDistancing: boolean; selfQuarantine: boolean };
 }) {
   const [precautionDates, setPrecationDates] = useState({ startIndex: 0, endIndex: 20 });
-  if (loading) return null;
+  if (loading || !data) return null;
+
+  const totalInfected = data.map(d => d['total infected']);
+  const peakX = totalInfected.indexOf(Math.max(...totalInfected));
 
   return (
     <div className="Visualizations">
@@ -70,6 +77,22 @@ export default function Visualizations({
               fill={`url(#color${category.name.replace(/ /g, '')})`}
             />
           ))}
+          <ReferenceLine
+            isFront
+            x={peakX}
+            stroke="#444"
+            label={({ viewBox }) => {
+              return (
+                <Label
+                  viewBox={{ ...viewBox, y: 15, height: 0 }}
+                  position="right"
+                  angle={90}
+                  offset={15}
+                >{`First peak (day ${peakX})`}</Label>
+              );
+            }}
+          />
+          {/* `First peak (day ${peakX})` */}
         </AreaChart>
       </ResponsiveContainer>
       <ResponsiveContainer>
