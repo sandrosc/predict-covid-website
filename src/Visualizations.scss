@@ -6,4 +6,13 @@
     min-width: 0;
     min-height: 0;
   }
+  .recharts-default-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .recharts-legend-item {
+      display: flex !important;
+      align-items: center;
+    }
+  }
 }

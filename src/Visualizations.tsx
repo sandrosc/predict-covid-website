@@ -10,6 +10,8 @@ import {
   Brush as OriginalBrush,
   ReferenceLine,
   Label,
+  Text,
+  Legend,
 } from 'recharts';
 import CustomBrush from './components/Brush';
 import classNames from 'classnames';
@@ -24,7 +26,7 @@ const graphCategories = [
   { name: 'Critical Cases', color: '#FF4136' },
   { name: 'Diseased', color: '#111111' },
   { name: 'Susceptible', color: '#7FDBFF' },
-  { name: 'Isolated', color: '#001f3f' },
+  { name: 'Isolated', color: '#0074D9' },
   { name: 'Recovered', color: '#2ECC40' },
 ];
 
@@ -62,6 +64,7 @@ export default function Visualizations({
               </linearGradient>
             ))}
           </defs>
+          <Legend verticalAlign="top" wrapperStyle={{ top: 0 }} iconType="circle" />
           <XAxis dataKey="index" interval={19} />
           <YAxis type="number" domain={[0, dataMax => Math.round(dataMax)]} width={75} />
           <CartesianGrid strokeDasharray="3 3" />
@@ -84,7 +87,7 @@ export default function Visualizations({
             label={({ viewBox }) => {
               return (
                 <Label
-                  viewBox={{ ...viewBox, y: 15, height: 0 }}
+                  viewBox={{ ...viewBox, y: 15, height: 140 }}
                   position="right"
                   angle={90}
                   offset={15}
@@ -92,7 +95,6 @@ export default function Visualizations({
               );
             }}
           />
-          {/* `First peak (day ${peakX})` */}
         </AreaChart>
       </ResponsiveContainer>
       <ResponsiveContainer>
@@ -104,6 +106,7 @@ export default function Visualizations({
             onChange={setPrecationDates}
             gap={10}
           />
+          <Text>Nice</Text>
         </AreaChart>
       </ResponsiveContainer>
     </div>
