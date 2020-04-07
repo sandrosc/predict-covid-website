@@ -27,6 +27,12 @@
     }
     margin-bottom: 20px;
   }
+  .firstVisualization,
+  .howto {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+  }
   .firstVisualization {
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -36,14 +42,31 @@
       grid-template-rows: auto minmax(auto, 400px);
       gap: 10px;
     }
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px 20px;
     min-width: 0;
     justify-self: center;
     > main {
       display: grid;
       overflow: hidden;
+    }
+  }
+  .howto {
+    h2 {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 800;
+    }
+    li {
+      margin: 10px 0;
+      p {
+        margin: 3px 0;
+      }
+    }
+    ol {
+      li {
+        font-weight: bold;
+        p {
+          font-weight: normal;
+        }
+      }
     }
   }
 }

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Visualizations from './Visualizations';
 import transformData from './transformData';
 import Configuration from './Configuration';
+import ReactMarkdown from 'react-markdown';
+/* eslint import/no-webpack-loader-syntax: off */
+import howto from '!raw-loader!./howto.md';
 import './App.scss';
 import './styles/react-toggle.scss';
 
@@ -35,9 +38,8 @@ export default function App() {
 
   useEffect(() => {
     setLoading(true);
-    import(`!file-loader!../data/${dataFile}`)
-      .then(async ({ default: dataUrl }) => {
-        const csvData = await fetch(dataUrl).then(response => response.text());
+    import(`!raw-loader!../data/${dataFile}`)
+      .then(({ default: csvData }) => {
         setData(transformData(csvData, true) as any);
         setLoading(false);
       })
@@ -70,6 +72,9 @@ export default function App() {
             onUpdatePrecautionDates={setPrecautionDates}
           />
         </main>
+      </div>
+      <div className="howto">
+        <ReactMarkdown source={howto} />
       </div>
     </div>
   );

@@ -162,6 +162,14 @@ class Brush extends PureComponent {
       startX: this.state.startX,
       endX: this.state.endX,
     });
+    const maxIndex = this.props.data.length - 1;
+    if (newIndex.startIndex === newIndex.endIndex) {
+      if (newIndex.startIndex === maxIndex) {
+        newIndex.startIndex = maxIndex - this.props.gap;
+      } else {
+        newIndex.endIndex = newIndex.startIndex + this.props.gap;
+      }
+    }
     this.setState({
       startX: this.scale(newIndex.startIndex),
       endX: this.scale(newIndex.endIndex),
