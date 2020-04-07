@@ -1,1 +1,0 @@
-{"version":3,"sources":["../data/results_sd_20_30.csv"],"names":["module","exports"],"mappings":"0HAAAA,EAAOC,QAAU,IAA0B","file":"static/js/24.1020048f.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"82a7c3b6eb52f802f3eb0fff0678157f.csv\";"],"sourceRoot":""}
