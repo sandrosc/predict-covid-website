@@ -11,6 +11,9 @@ ${csvData}`
     transform: v => +v,
     skipEmptyLines: true,
   });
+  data.forEach((dataPoint, index) => {
+    dataPoint.index = index;
+  });
   return data;
 }
 

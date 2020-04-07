@@ -31,6 +31,11 @@
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-template-rows: minmax(auto, 400px);
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(auto, 400px);
+      gap: 10px;
+    }
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px 20px;

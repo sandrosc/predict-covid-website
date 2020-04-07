@@ -38,7 +38,7 @@ export default function App() {
     import(`!file-loader!../data/${dataFile}`)
       .then(async ({ default: dataUrl }) => {
         const csvData = await fetch(dataUrl).then(response => response.text());
-        setData(transformData(csvData, dataFile !== baseData) as any);
+        setData(transformData(csvData, true) as any);
         setLoading(false);
       })
       .catch(() => {
