@@ -1,2 +1,0 @@
-(this["webpackJsonppredict-covid-website"]=this["webpackJsonppredict-covid-website"]||[]).push([[38],{454:function(e,d,i){e.exports=i.p+"40edbd4bf3238eb5dbf7d915d153993a.csv"}}]);
-//# sourceMappingURL=38.94b7702f.chunk.js.map
