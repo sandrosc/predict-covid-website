@@ -12,6 +12,7 @@ import {
   Label,
   Text,
   Legend,
+  ReferenceArea,
 } from 'recharts';
 import CustomBrush from './components/Brush';
 import classNames from 'classnames';
@@ -66,6 +67,15 @@ export default function Visualizations({
                 <stop offset="95%" stopColor={category.color} stopOpacity={0.5} />
               </linearGradient>
             ))}
+            <pattern
+              id="diagonalHatch"
+              width="6"
+              height="6"
+              patternTransform="rotate(45 0 0)"
+              patternUnits="userSpaceOnUse"
+            >
+              <line x1="0" y1="0" x2="0" y2="6" style={{ stroke: '#2ECC40', strokeWidth: 2 }} />
+            </pattern>
           </defs>
           <Legend verticalAlign="top" wrapperStyle={{ top: 0 }} iconType="circle" />
           <XAxis dataKey="index" interval={19} />
@@ -83,6 +93,14 @@ export default function Visualizations({
               fill={`url(#color${category.name.replace(/ /g, '')})`}
             />
           ))}
+          {(config.socialDistancing || config.selfQuarantine) && (
+            <ReferenceArea
+              x1={precautionDates.start}
+              x2={precautionDates.end}
+              fill={'url(#diagonalHatch)'}
+              fillOpacity={1}
+            />
+          )}
           <ReferenceLine
             isFront
             x={peakX}
