@@ -25,7 +25,7 @@ function getDataFile({
     return baseData;
   }
   const filterKey = socialDistancing ? (selfQuarantine ? 'sqd' : 'sd') : 'sq';
-  return `results_${filterKey}_${start + 90}_${end + 90}.csv`;
+  return `results_${filterKey}_${start}_${end}.csv`;
 }
 
 export default function App() {
