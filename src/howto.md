@@ -6,9 +6,9 @@
 
 3. Drag the right side of the slider so that the number corresponds with the last day of the implemented policy
 
-First infection is assumed to be on day 15, corresponding to February 14th
-First reported case was on February 25th (corresponding to day 26)
-Current work from home measures in Switzerland were implemented on March 20th (day 50) and are set to last until April 19th (day 80)
+- First infection is assumed to be on day 15, corresponding to February 14th
+- First reported case was on February 25th (corresponding to day 26)
+- Current work from home measures in Switzerland were implemented on March 20th (day 50) and are set to last until April 19th (day 80)
 
 Description of policies:
 
