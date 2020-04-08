@@ -40,7 +40,7 @@ export default function App() {
     setLoading(true);
     import(`!raw-loader!../data/${dataFile}`)
       .then(({ default: csvData }) => {
-        setData(transformData(csvData, true) as any);
+        setData(transformData(csvData) as any);
         setLoading(false);
       })
       .catch(() => {
