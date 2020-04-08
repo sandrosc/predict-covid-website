@@ -6,7 +6,7 @@
 
 3. Drag the right side of the slider so that the number corresponds with the last day of the implemented policy
 
-First infection is on day 105, corresponding to February 14 (First reported case was February 25th in Switzerland)
+First infection is on day 15, corresponding to February 14 (First reported case was February 25th in Switzerland)
 
 Description of policies:
 
