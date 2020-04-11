@@ -27,7 +27,7 @@ const graphCategories = [
   { name: 'Critical Cases', color: '#FF4136' },
   { name: 'Deceased', color: '#000000' },
   { name: 'Susceptible', color: '#7FDBFF' },
-  {/* name: 'Isolated', color: '#0074D9' */},
+  { name: 'Isolated', color: '#0074D9' },
   { name: 'Recovered', color: '#2ECC40' },
 ];
 
