@@ -25,7 +25,7 @@ const graphCategories = [
   { name: 'Infected asymptomatic', color: '#FFDC00' },
   { name: 'Infected symptomatic', color: '#FF851B' },
   { name: 'Critical Cases', color: '#FF4136' },
-  { name: 'Diseased', color: '#111111' },
+  { name: 'Deceased', color: '#111111' },
   { name: 'Susceptible', color: '#7FDBFF' },
   { name: 'Isolated', color: '#0074D9' },
   { name: 'Recovered', color: '#2ECC40' },
@@ -127,7 +127,7 @@ export default function Visualizations({
             onChange={({ startIndex, endIndex }) => {
               onUpdatePrecautionDates({ start: startIndex, end: endIndex });
             }}
-            gap={10}
+            gap={5}
           />
           <Text>Nice</Text>
         </AreaChart>
