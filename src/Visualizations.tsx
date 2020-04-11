@@ -25,9 +25,9 @@ const graphCategories = [
   { name: 'Infected asymptomatic', color: '#FFDC00' },
   { name: 'Infected symptomatic', color: '#FF851B' },
   { name: 'Critical Cases', color: '#FF4136' },
-  { name: 'Deceased', color: '#111111' },
+  { name: 'Deceased', color: '#000000' },
   { name: 'Susceptible', color: '#7FDBFF' },
-  { name: 'Isolated', color: '#0074D9' },
+  {/* name: 'Isolated', color: '#0074D9' */},
   { name: 'Recovered', color: '#2ECC40' },
 ];
 
