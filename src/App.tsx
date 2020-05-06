@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Visualizations from './Visualizations';
 import transformData from './transformData';
-import Configuration from './Configuration';
+import Visualizations from './components/Visualizations';
+import Configuration from './components/Configuration';
 import ReactMarkdown from 'react-markdown';
 /* eslint import/no-webpack-loader-syntax: off */
 import howto from '!raw-loader!./howto.md';

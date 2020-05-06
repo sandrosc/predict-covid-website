@@ -1,4 +1,11 @@
 /**
+ * This is a modified Component of the recharts library
+ * - better performance
+ * - doesn't filter data
+ * - locks handles to gaps'
+ */
+
+/**
  * @fileOverview Brush
  */
 import React, { PureComponent, Children } from 'react';

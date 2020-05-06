@@ -14,10 +14,10 @@ import {
   Legend,
   ReferenceArea,
 } from 'recharts';
-import CustomBrush from './components/Brush';
+import CustomBrush from './recharts/Brush';
 import classNames from 'classnames';
 import './Visualizations.scss';
-import { DataPoint } from './transformData';
+import { DataPoint } from '../transformData';
 
 const Brush = CustomBrush as typeof OriginalBrush;
 
