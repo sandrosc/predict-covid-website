@@ -46,7 +46,7 @@ export default function Visualizations({
 }) {
   if (loading || !data) return <div />;
 
-  const totalInfected = data.map(d => d['total infected']);
+  const totalInfected = data.map(d => d['Critical Cases'] + d['Infected asymptomatic'] + d['Infected symptomatic']);
   const peakX = totalInfected.indexOf(Math.max(...totalInfected));
 
   return (

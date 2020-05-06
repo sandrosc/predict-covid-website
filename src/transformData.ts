@@ -19,12 +19,10 @@ const headers = [
   'Infected asymptomatic',
   'Infected symptomatic',
   'Critical Cases',
-  'Diseased',
+  'Deceased',
   'Susceptible',
   'Isolated',
   'Recovered',
-  'total infected',
-  'accumulated cases',
 ];
 
 export interface DataPoint {
@@ -32,10 +30,8 @@ export interface DataPoint {
   'Infected asymptomatic': number;
   'Infected symptomatic': number;
   'Critical Cases': number;
-  Diseased: number;
+  Deceased: number;
   Susceptible: number;
   Isolated: number;
   Recovered: number;
-  'total infected': number;
-  'accumulated cases': number;
 }
